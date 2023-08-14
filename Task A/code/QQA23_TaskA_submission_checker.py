@@ -7,10 +7,11 @@ import re
 import os
 from functools import partial
 import argparse
+import pandas as pd
 
 
 run_columns = ["qid", "Q0", "docid", "rank", "score", "tag"]
-
+RETRIEVED_DOCS_LIMIT = 10
 is_float = partial(re.match, r'^-?\d+(?:\.\d+)?$')
 
 LINE_CHECKS = [
@@ -20,6 +21,19 @@ LINE_CHECKS = [
     # lambda line: 'Wrong Q0' if line[run_columns.index('Q0')] != 'Q0' else None,
     lambda line: 'The score is not a float' if not is_float(line[run_columns.index('score')]) else None,
 ]
+
+def check_retrieved_doc_limit(preditions_file_path, split_token):
+    
+    df = pd.read_csv(preditions_file_path, sep=split_token, names=run_columns)    
+    value_counts = df['qid'].value_counts()
+    # Check if any value has rows greater than the upper limit
+    values_greater_than_n = value_counts[value_counts > RETRIEVED_DOCS_LIMIT]
+    if not values_greater_than_n.empty:
+        return values_greater_than_n
+    else:
+        return True
+
+
 
 def is_tab_sparated(preditions_file_path):
     with open(preditions_file_path) as tsvfile:
@@ -48,6 +62,12 @@ def check_format(preditions_file_path):
         return 'Wrong column delimiter'
 
     split_token = '\t' if tab_separted else ' ' # split on tab if the file is tab separated, and on space otherwise
+    check_limit_answer = check_retrieved_doc_limit(preditions_file_path, split_token)
+    if  check_limit_answer is not True:
+        error_message = "The number of retrieved passages per query is above the limit. You are only allowed to retrieve up to 10 passages per query. \n \
+Ids of questions that exceed the upper limit are: \n" + check_limit_answer.to_string()
+        return error_message
+    
 
     with open(preditions_file_path) as tsvfile:
         pair_ids = {}

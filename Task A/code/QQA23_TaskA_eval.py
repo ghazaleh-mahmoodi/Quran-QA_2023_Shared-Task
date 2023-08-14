@@ -10,7 +10,7 @@ import logging
 logger = logging.getLogger(__name__)
 logger.setLevel(level=logging.DEBUG)
 
-METRICS = ['map', 'recip_rank']
+METRICS = ['map_cut_10', 'recip_rank']
 qrels_columns = ["qid", "Q0", "docid", "relevance"]
 run_columns = ["qid", "Q0", "docid", "rank", "score", "tag"]
 
