@@ -78,7 +78,7 @@ def sumbmission_file(qa_pipeline, dev_passage_question_objects):
             # if not find_sim:
             results_attribute.append((list_sorted[i]['answer'], list_sorted[i]['score'], i+1, start, end))
 
-      #results_attribute = remove_duplicated(results_attribute)
+      
       final_dect= [{"answer":i[0],"score":i[1],"rank":i[2], "strt_token_indx":i[3], "end_token_indx": i[4]} for i in results_attribute]
       list_dict.append({pq_id:final_dect})
     
