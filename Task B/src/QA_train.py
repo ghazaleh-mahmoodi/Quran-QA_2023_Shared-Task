@@ -7,17 +7,18 @@ import torch
 
 max_length = 256 # The maximum length of a feature (question and context)
 doc_stride = 64 # The authorized overlap between two part of the context when splitting it is needed.
-batch_size = 8
 lr = 3e-5
 
 #Arabic best availble pre-train model
 
 
-epoch = 1
-model = "wissamantoun/araelectra-base-artydiqa" # run 1 : pAP@10 = 0.454
+#epoch = 1
+#batch_size = 8
+#model = "wissamantoun/araelectra-base-artydiqa" # run 1 : pAP@10 = 0.0.437
 
-#epoch = 30
-#model = "ZeyadAhmed/AraElectra-Arabic-SQuADv2-QA" # run 3 : pAP@10 = 0.469
+epoch = 30
+batch_size = 4
+model = "ZeyadAhmed/AraElectra-Arabic-SQuADv2-QA" # run 3 : pAP@10 = 0.469
 
 
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
