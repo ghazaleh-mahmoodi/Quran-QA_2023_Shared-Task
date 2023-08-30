@@ -64,21 +64,11 @@ def sumbmission_file(qa_pipeline, dev_passage_question_objects):
       for i in range(len(list_sorted)):
             if list_sorted[i]['answer'] in stopWords:
                 continue
-            # find_sim = False
-            start, end = convert_char_to_token_index(passage, list_sorted[i]['answer'])
-            # if i > 0:
-            #     for t in seq_start_end:
-            #         if t == (start, end):
-            #             print(pq_id, t)
-            #             find_sim = True
-            #             continue 
 
-            
-            # seq_start_end.append((start, end))
-            # if not find_sim:
+            start, end = convert_char_to_token_index(passage, list_sorted[i]['answer'])
+
             results_attribute.append((list_sorted[i]['answer'], list_sorted[i]['score'], i+1, start, end))
 
-      
       final_dect= [{"answer":i[0],"score":i[1],"rank":i[2], "strt_token_indx":i[3], "end_token_indx": i[4]} for i in results_attribute]
       list_dict.append({pq_id:final_dect})
     
@@ -86,8 +76,8 @@ def sumbmission_file(qa_pipeline, dev_passage_question_objects):
   return output_result
 
 
-def eval_qa(ar_model, ar_tokenizer):
-    dev_set_file = "data/QQA23_TaskB_qrcd_v1.2_dev_preprocessed.jsonl"
+def eval_qa(ar_model, ar_tokenizer, dev_set_file, output_file = 'result/Gym_dev.json'):
+    print(dev_set_file)
     dev_passage_question_objects = load_jsonl(dev_set_file)
 
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
@@ -95,6 +85,6 @@ def eval_qa(ar_model, ar_tokenizer):
 
     output_result = sumbmission_file(qa_pipeline, dev_passage_question_objects)
                     
-    output_file = 'result/Gym_run12.json'
+    
     with open(output_file, 'w', encoding='utf-8') as outfile:
         json.dump(output_result, outfile, indent=2, ensure_ascii=False)

@@ -5,19 +5,20 @@ import pandas as pd
 import datasets 
 import torch
 
-
-max_length = 512 # The maximum length of a feature (question and context)
-doc_stride = 16 # The authorized overlap between two part of the context when splitting it is needed.
+max_length = 256 # The maximum length of a feature (question and context)
+doc_stride = 64 # The authorized overlap between two part of the context when splitting it is needed.
 batch_size = 8
 lr = 3e-5
-epoch = 8
 
 #Arabic best availble pre-train model
 
-#model = "aubmindlab/bert-large-arabertv02" # run 0 : pAP@10 = 0.289
-model = "wissamantoun/araelectra-base-artydiqa" # run 1 : pAP@10 = 0.437
-#model = "ZeyadAhmed/AraElectra-Arabic-SQuADv2-QA" # run 3 : pAP@10 = 0.435
-#model = "zohaib99k/Bert_Arabic-SQuADv2-QA" # run8 : pAP@10 = 0.435
+
+epoch = 1
+model = "wissamantoun/araelectra-base-artydiqa" # run 1 : pAP@10 = 0.454
+
+#epoch = 30
+#model = "ZeyadAhmed/AraElectra-Arabic-SQuADv2-QA" # run 3 : pAP@10 = 0.469
+
 
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 ar_tokenizer = AutoTokenizer.from_pretrained(model)
@@ -33,7 +34,7 @@ def prepare_train_features(examples):
         max_length=max_length,
         stride=doc_stride,
         return_overflowing_tokens=True,
-        return_offsets_mapping=True,)
+        return_offsets_mapping=True)
     
     sample_mapping = tokenized_examples.pop("overflow_to_sample_mapping")
     offset_mapping = tokenized_examples.pop("offset_mapping")
@@ -103,6 +104,7 @@ def create_dataset(train_passage_question_objects):
 
 def train_QA():
     print(device)
+    print(model)
     train_set_file = "data/QQA23_TaskB_qrcd_v1.2_train_preprocessed.jsonl"
     dev_set_file = "data/QQA23_TaskB_qrcd_v1.2_dev_preprocessed.jsonl"
 
@@ -121,7 +123,9 @@ def train_QA():
         per_device_train_batch_size=batch_size,
         per_device_eval_batch_size=batch_size,
         num_train_epochs=epoch,
-        weight_decay=0.0001)
+        weight_decay=0.0001,
+        save_strategy = "epoch",
+        load_best_model_at_end=True)
 
 
     trainer = Trainer(
@@ -129,9 +133,12 @@ def train_QA():
     args=args,
     train_dataset=tokenized_ds['train'],
     eval_dataset=tokenized_ds['dev'],
-        tokenizer=ar_tokenizer)
+    tokenizer=ar_tokenizer)
 
     # start training
     trainer.train()
-
+    
+    model_path = "Quran_QA_model"
+    trainer.save_model(model_path)
+    
     return ar_tokenizer, ar_model
