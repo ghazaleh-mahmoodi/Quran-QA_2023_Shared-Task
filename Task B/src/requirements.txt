@@ -1,0 +1,10 @@
+accelerate==0.22.0
+farasapy==0.0.14
+huggingface-hub==0.16.4
+numpy==1.25.2
+pandas==2.0.3
+tokenizers==0.13.3
+torch==2.0.1
+tqdm==4.66.1
+transformers==4.32.1
+datasets==2.14.4
