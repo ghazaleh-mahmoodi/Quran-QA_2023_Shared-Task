@@ -32,3 +32,28 @@ The source of the Qur'anic text in QRCD is the [Tanzil project download page](ht
 ```bash
 pip install -r requirements.txt
 ```
+
+## Run 
+to finetune our QA model, run following command:
+```bash
+bash run_qa.sh
+```
+
+### code structure explanation
+By running run_qa.sh, two files are executed consecutively. In the first part, QA_pipeline.py is executed. In this file, the LLM model is fine-tuned for QA with the corresponding configurations. Next, the fine-tuned model is used for prediction, and the pAP@10 metric is calculated on the dev data. Finally, the results are stored in the result directory.
+
+In the QA_train.py file, there are two different configurations. For fine-tuning the AraElectra-SQuADv2 model (the best model), use the following settings:
+```bash
+poch = 30
+batch_size = 4
+model = "ZeyadAhmed/AraElectra-Arabic-SQuADv2-QA" 
+```
+
+To run AraElectra-TyDiQA, set the hyperparameters with the specified values.
+```bash
+epoch = 1
+batch_size = 8
+model = "wissamantoun/araelectra-base-artydiqa"
+```
+
+To run the ensemble model, simply execute all cell in the ensemble.ipynb notebook file. Additionally, the results of the two mentioned models should be available in the result directory to ensemble model run successfully.
