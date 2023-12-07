@@ -56,8 +56,29 @@ Each Qur’anic passage in *QRCD* may have more than one occurrence; and each *p
 
 The source of the Qur'anic text in QRCD is the [Tanzil project download page](https://tanzil.net/download/), which provides verified versions of the Holy Qur'an in several scripting styles. We have chosen the *simple-clean* text style of Tanzil version 1.0.2. 
 
+
+
+
+
 ## How to cite
 If you use the *QRCD* dataset in your research, please cite the following references:
 * Rana Malhas and Tamer Elsayed. Arabic Machine Reading Comprehension on the Holy Qur’an using CL-AraBERT. Information Processing & Management, 59(6), p.103068, 2022.
 * Rana Malhas and Tamer Elsayed. AyaTEC: Building a Reusable Verse-Based Test Collection for Arabic Question Answering on the Holy Qur’an. ACM Transactions on Asian and Low-Resource Language Information Processing (TALLIP), 19(6), pp.1-21, 2020.
 -->
+
+
+## Citation
+```bash
+@inproceedings{mahmoudi-etal-2023-gym,
+    title = "{GYM} at Qur{'}an {QA} 2023 Shared Task: Multi-Task Transfer Learning for {Q}uranic Passage Retrieval and Question Answering with Large Language Models",
+    author = "Mahmoudi, Ghazaleh  and Morshedzadeh, Yeganeh  and Eetemadi, Sauleh",
+    booktitle = "Proceedings of ArabicNLP 2023",
+    month = dec,
+    year = "2023",
+    address = "Singapore (Hybrid)",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2023.arabicnlp-1.79",
+    pages = "714--719",
+}
+
+```
