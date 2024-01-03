@@ -1,5 +1,39 @@
 # Qur'an QA 2023 Shared Task!
 
+This repository contains GYM's submission to [Qur&#39;an QA 2023 shared task](https://sites.google.com/view/quran-qa-2023), which has two tasks.
+
+- [Task A: Passage Retrieval (PR) task](https://github.com/ghazaleh-mahmoodi/Quran-QA_2023_Shared-Task/tree/main/Task%20A#task-a-passage-retrieval-pr) -- given a question, find all Qur'anic passages that have potential answers.
+- [Task B: Reading Comprehension (RC) task](https://github.com/ghazaleh-mahmoodi/Quran-QA_2023_Shared-Task/tree/main/Task%20B#task-b-reading-comprehension-rc) -- given a question and a qur'anic passage, find all answers to the question.
+
+## Poster
+<img src="./ArabicNLP%20Poster.svg">
+
+* Paper: [https://aclanthology.org/2023.arabicnlp-1.79/](https://aclanthology.org/2023.arabicnlp-1.79/)
+* Presentation: [https://github.com/ghazaleh-mahmoodi/Quran-QA_2023_Shared-Task/blob/main/GYM_ArabicNLP%20Presentation.pdf](https://github.com/ghazaleh-mahmoodi/Quran-QA_2023_Shared-Task/blob/main/GYM_ArabicNLP%20Presentation.pdf)
+
+## How to cite
+```bash
+@inproceedings{mahmoudi-etal-2023-gym,
+    title = "{GYM} at Qur{'}an {QA} 2023 Shared Task: Multi-Task Transfer Learning for {Q}uranic Passage Retrieval and Question Answering with Large Language Models",
+    author = "Mahmoudi, Ghazaleh  and Morshedzadeh, Yeganeh  and Eetemadi, Sauleh",
+    booktitle = "Proceedings of ArabicNLP 2023",
+    month = dec,
+    year = "2023",
+    address = "Singapore (Hybrid)",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2023.arabicnlp-1.79",
+    pages = "714--719",
+}
+
+```
+
+## References
+* Malhas, R., 2023. *Arabic Question Answering on the Holy Qur'an* (Doctoral dissertation).
+* Malhas, R. and Elsayed, T., 2020. [*AyaTEC*: Building a Reusable Verse-based Test Collection for Arabic Question Answering on the holy qur’an](https://www.sciencedirect.com/science/article/pii/S0306457322001704). *ACM Transactions on Asian and Low-Resource Language Information Processing (TALLIP)*, 19(6), pp.1-21.
+* Swar, M. N.,2007.  Mushaf Al-Tafseel Al-Mawdoo’ee. Damascus: Dar Al-Fajr Al-Islami.
+
+
+<!---
 This repository contains the datasets, format checkers and scorers for [Qur&#39;an QA 2023 shared task](https://sites.google.com/view/quran-qa-2023), which has two tasks.
 
 - [Task A: Passage Retrieval (PR) task](https://gitlab.com/bigirqu/quran-qa-2023/-/tree/main/Task-A) -- given a question, find all Qur'anic passages that have potential answers.
@@ -32,7 +66,7 @@ If you use the datasets of Task-A, please cite the following references
 * Swar, M. N.,2007.  Mushaf Al-Tafseel Al-Mawdoo’ee. Damascus: Dar Al-Fajr Al-Islami.
 
 
-<!---This repository contains the following:
+This repository contains the following:
 * The [*QRCD* (Qur'anic Reading Comprehension Dataset)](https://gitlab.com/bigirqu/quranqa/-/tree/main/datasets)
 * A [*reader* script](https://gitlab.com/bigirqu/quranqa/-/tree/main/code) for the dataset.
 * A [*submission checker* script]( https://gitlab.com/bigirqu/quranqa/-/tree/main/code) for checking the correctness of run files to be submitted. 
@@ -66,19 +100,3 @@ If you use the *QRCD* dataset in your research, please cite the following refere
 * Rana Malhas and Tamer Elsayed. AyaTEC: Building a Reusable Verse-Based Test Collection for Arabic Question Answering on the Holy Qur’an. ACM Transactions on Asian and Low-Resource Language Information Processing (TALLIP), 19(6), pp.1-21, 2020.
 -->
 
-
-## Citation
-```bash
-@inproceedings{mahmoudi-etal-2023-gym,
-    title = "{GYM} at Qur{'}an {QA} 2023 Shared Task: Multi-Task Transfer Learning for {Q}uranic Passage Retrieval and Question Answering with Large Language Models",
-    author = "Mahmoudi, Ghazaleh  and Morshedzadeh, Yeganeh  and Eetemadi, Sauleh",
-    booktitle = "Proceedings of ArabicNLP 2023",
-    month = dec,
-    year = "2023",
-    address = "Singapore (Hybrid)",
-    publisher = "Association for Computational Linguistics",
-    url = "https://aclanthology.org/2023.arabicnlp-1.79",
-    pages = "714--719",
-}
-
-```
