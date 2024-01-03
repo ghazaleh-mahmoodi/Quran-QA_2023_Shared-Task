@@ -6,7 +6,7 @@ This repository contains GYM's submission to [Qur&#39;an QA 2023 shared task](ht
 - [Task B: Reading Comprehension (RC) task](https://github.com/ghazaleh-mahmoodi/Quran-QA_2023_Shared-Task/tree/main/Task%20B#task-b-reading-comprehension-rc) -- given a question and a qur'anic passage, find all answers to the question.
 
 ## Poster
-<img src="./ArabicNLP%20Poster.svg">
+<img src="./GYM_ArabicNLP%20Poster.png">
 
 * Paper: [https://aclanthology.org/2023.arabicnlp-1.79/](https://aclanthology.org/2023.arabicnlp-1.79/)
 * Presentation: [https://github.com/ghazaleh-mahmoodi/Quran-QA_2023_Shared-Task/blob/main/GYM_ArabicNLP%20Presentation.pdf](https://github.com/ghazaleh-mahmoodi/Quran-QA_2023_Shared-Task/blob/main/GYM_ArabicNLP%20Presentation.pdf)
